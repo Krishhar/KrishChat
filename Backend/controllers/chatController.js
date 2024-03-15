@@ -4,6 +4,7 @@ const User = require('../models/Usermodel');
 
 const accessController = asyncHandler(async (req, res) => {
     const { userId } = req.body
+    
 
     if (!userId) {
         console.log("User Param not sent with request")
@@ -49,6 +50,7 @@ const accessController = asyncHandler(async (req, res) => {
     }
 });
 
+
 const fetchChats = asyncHandler(async (req, res) => {
     try {
         Chat.find({ users: { $elemMatch: { $eq: req.user._id } } })
@@ -65,7 +67,8 @@ const fetchChats = asyncHandler(async (req, res) => {
                 res.status(200).send(results)
             })
     }
-    catch (err) { }
+    catch (err) { console.error(err);
+        res.status(500).json({ message: "Internal Server Error" });}
 })
 
 const createGroupChats = asyncHandler(async (req, res) => {

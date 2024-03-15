@@ -5,7 +5,7 @@ const { accessController, fetchChats, createGroupChats, renameGroup, addToGroup,
 const router = express.Router()
 
 router.route('/').post(protect, accessController)
-router.route('/').get(protect, fetchChats)
+router.route('/').get(fetchChats)
 router.route('/group').post(protect, createGroupChats)
 router.route('/rename').put(renameGroup)
 router.route('/remove').put(removeFromGroup)

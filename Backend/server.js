@@ -13,22 +13,22 @@ ConnBD()
 
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send('Running')
-}) 
+// app.get('/', (req, res) => {
+//     res.send('Running')
+// }) 
 
 app.use('/api/user', UserRoutes)
 app.use('/api/chat', chatRoutes)
 
-app.get('/api/chat', (req, res) => {
-    res.send(chats)
-})
+// app.get('/api/chat', (req, res) => {
+//     res.send(chats)
+// })
 
-app.get('/api/chat/:id', (req, res) => {
-    const singleChat = chats.find((c) => c._id === req.params.id)
-    res.send(singleChat)
+// app.get('/api/chat/:id', (req, res) => {
+//     const singleChat = chats.find((c) => c._id === req.params.id)
+//     res.send(singleChat)
 
-})
+// })
 
 app.use(notFound)
 app.use(errorHandler)
